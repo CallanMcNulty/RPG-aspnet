@@ -1,0 +1,11 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "RPG | Characters";
+}
+
+@model RPG.Models.Character
+
+<h3>Character</h3>
+
+
+<img src="@Model.AvatarUrl" class="avatar-thumb" style="max-width: 100px"/> | @Model.Name

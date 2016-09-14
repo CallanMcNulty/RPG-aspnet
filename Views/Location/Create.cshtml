@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "RPG | Create Location";
+}
+
+@model RPG.Models.Location
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+
+    @Html.LabelFor(model => model.XCoord)
+    @Html.EditorFor(model => model.XCoord)
+
+    @Html.LabelFor(model => model.YCoord)
+    @Html.EditorFor(model => model.YCoord)
+
+    <input type="submit" value="Create" />
+}

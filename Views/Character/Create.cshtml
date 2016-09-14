@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "RPG | Character Creation";
+ }
+
+@model RPG.Models.Character
+<h2>Create Character</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.AvatarUrl)
+    @Html.EditorFor(model => model.AvatarUrl)
+    <input type="submit" value="Create" />
+    
+}

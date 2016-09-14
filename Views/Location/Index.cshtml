@@ -1,0 +1,14 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "RPG | Locations";
+}
+
+@model IEnumerable<RPG.Models.Location>
+
+
+<ul>
+@foreach(var location in Model)
+{
+    <li>@location.Name</li>
+}
+</ul>
