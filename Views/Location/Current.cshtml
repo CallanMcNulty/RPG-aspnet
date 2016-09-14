@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "RPG | "+Model.Name;
+}
+
+@model RPG.Models.Location
+
+<h2>@Model.Name</h2>
+<hr />
+<p>@Model.Description</p>
+<hr />
+@if (ViewBag.IsCurrentLocation)
+{
+    <ul>
+        @foreach(var item in Model.Items)
+        {
+            <li>@item.Description | @Html.ActionLink("Take Item", "Loot", "Location", new { id = item.Id })</li>
+        }
+    </ul>
+    <br />
+    <br />
+    @if (ViewBag.CanGoNorth)
+    {
+        @Html.ActionLink("Go North", "Go", "Location", new { direction = 0 });
+    }
+    @if (ViewBag.CanGoEast)
+    { 
+        @Html.ActionLink("Go East", "Go", "Location", new { direction = 1 });
+    }
+    @if (ViewBag.CanGoSouth)
+    {
+        @Html.ActionLink("Go South", "Go", "Location", new { direction = 2 });
+    }
+    @if (ViewBag.CanGoWest)
+    { 
+        @Html.ActionLink("Go West", "Go", "Location", new { direction = 3 });
+    }
+}

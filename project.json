@@ -27,7 +27,11 @@
     "Microsoft.EntityFrameworkCore.Tools": {
       "type": "build",
       "version": "1.0.0-preview2-final"
-    }
+    },
+    "System.Linq": "4.1.0",
+    "System.Interactive.Async": "3.0.0",
+    "System.Linq.Queryable": "4.0.1",
+    "System.Collections.Immutable": "1.2.0"
   },
 
   "tools": {

@@ -1,0 +1,14 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "RPG | Character Inventory";
+}
+
+@model RPG.Models.Character
+<h2>@Model.Name's Inventory</h2>
+
+<ul>
+    @foreach(var item in Model.Inventory)
+    {
+        <li>@item.Name | @Html.ActionLink("Drop", "Drop", "Location", new { id = item.Id })</li>
+    }
+</ul>

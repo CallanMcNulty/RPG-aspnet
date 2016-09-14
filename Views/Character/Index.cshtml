@@ -8,4 +8,4 @@
 <h3>Character</h3>
 
 
-<img src="@Model.AvatarUrl" class="avatar-thumb" style="max-width: 100px"/> | @Model.Name
+<img src="@Model.AvatarUrl" class="avatar-thumb" style="max-width: 100px"/> | @Model.Name | @Html.ActionLink("Play", "Current", "Location", new { id = Model.LocationId})

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using RPG.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,12 +23,12 @@ namespace RPG.Controllers
             _userManager = userManager;
             _db = db;
         }
-
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<IActionResult> Create(Character character)
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -46,6 +47,15 @@ namespace RPG.Controllers
 
             Character character = _db.Characters.FirstOrDefault(c => c.UserId == currentUser.Id);
 
+            return View(character);
+        }
+        public async Task<IActionResult> Inventory()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            Character character = _db.Characters.FirstOrDefault(c => c.UserId == currentUser.Id);
+            List<Item> inventory = _db.Items.Where(i => i.CharacterId == character.Id).ToList();
+            character.Inventory = inventory;
             return View(character);
         }
     }

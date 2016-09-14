@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "RPG | Characters";
+}
+
+@model RPG.Models.Item
+
+@using (@Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+
+    <select name="locationId">
+        @foreach(var location in ViewBag.Location)
+        {
+            <option value=@location.Id>@location.Name</option>
+        }
+    </select>
+    <input type="submit" value="Create" />
+}

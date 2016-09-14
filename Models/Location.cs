@@ -16,5 +16,6 @@ namespace RPG.Models
         public string Description { get; set; }
         public int XCoord { get; set; }
         public int YCoord { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }
